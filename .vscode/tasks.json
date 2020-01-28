@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "copyOnPi",
+            "type": "shell",
+            "command": "scp ${file} pi@192.168.1.2:~/Documents/remote/${fileBasename}"
+        },
+        {
+            "label": "startOnPi",
+            "type": "shell",
+            "command": "ssh pi@192.168.1.2 'nohup python3 ~/Documents/remote/${fileBasename} > /dev/null 2>&1 &'"
+        },
+        {
+            "label": "wait",
+            "type": "shell",
+            "command": "timeout 5"
+        },
+        {
+            "label": "copyAndStartOnPi",
+            "dependsOrder": "sequence",
+            "dependsOn": ["copyOnPi", "startOnPi", "wait"] 
+        },
+        {
+            "label": "cleanupOnPi",
+            "type": "shell",
+            "command": "ssh pi@192.168.1.2 'pkill -9 python'"
+        },
+    ]
+}
