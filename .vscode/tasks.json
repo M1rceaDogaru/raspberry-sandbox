@@ -4,12 +4,12 @@
         {
             "label": "copyOnPi",
             "type": "shell",
-            "command": "scp ${file} pi@192.168.1.2:~/Documents/remote/${fileBasename}"
+            "command": "scp ${file} pi@192.168.1.7:~/Documents/remote/${fileBasename}"
         },
         {
             "label": "startOnPi",
             "type": "shell",
-            "command": "ssh pi@192.168.1.2 'nohup python3 ~/Documents/remote/${fileBasename} > /dev/null 2>&1 &'"
+            "command": "ssh pi@192.168.1.7 'nohup python3 ~/Documents/remote/${fileBasename} > /dev/null 2>&1 &'"
         },
         {
             "label": "wait",
@@ -24,7 +24,7 @@
         {
             "label": "cleanupOnPi",
             "type": "shell",
-            "command": "ssh pi@192.168.1.2 'pkill -9 python'"
+            "command": "ssh pi@192.168.1.7 'pkill -9 python'"
         },
     ]
 }
