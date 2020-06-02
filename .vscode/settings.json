@@ -1,0 +1,4 @@
+{
+    "sshUser": "pi",
+    "sshEndpoint": "192.168.68.108"    
+}
